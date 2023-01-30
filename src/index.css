@@ -14,5 +14,6 @@ code {
 }
 
 a{
-  cursor:pointer
+  cursor:pointer;
+  text-decoration: none;
 }

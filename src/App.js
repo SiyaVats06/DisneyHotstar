@@ -7,6 +7,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Login from './componenets/Login';
 
 
 
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/detail",
     element: <Detail  />,
+  },
+  {
+    path: "/login",
+    element: <Login  />,
   },
 ])
 

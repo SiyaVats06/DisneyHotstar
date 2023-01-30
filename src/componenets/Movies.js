@@ -29,6 +29,7 @@ export default Movies
 
 const Container=styled.div`
 color:white;
+z-index:0;
 overflow:hidden`
 
 const Content =styled.div`

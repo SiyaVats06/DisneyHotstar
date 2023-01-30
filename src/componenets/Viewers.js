@@ -31,6 +31,7 @@ margin-top:20px;
 padding:30px 0px 26px;
 display:grid;
 cursor:pointer;
+z-index:0;
 grid-gap:25px;
 grid-template-columns:repeat(5,minmax(0,1fr))`
 

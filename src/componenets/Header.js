@@ -1,7 +1,32 @@
 import React from 'react'
 import styled from "styled-components"
+import {auth } from "../firebase"
+import { signInWithPopup } from 'firebase/auth';
+
+import {selectUserName,selectUserPhoto} from "../features/user/userSlice";
+
+import { FacebookAuthProvider } from 'firebase/auth';
+import {  useSelector} from "react-redux"
+ 
+const provider=new FacebookAuthProvider();
+
 
 function Header() {
+  
+
+    
+    function SignIn(e){
+        e.preventDefault();
+       signInWithPopup(auth,provider)
+        .then((result)=>{
+            console.log(result);
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
+    }
+
+    
     return (
         <Nav>
             <Left>
@@ -35,7 +60,8 @@ function Header() {
                 <Subscribe>
                     <a>SUBSCRIBE</a>
                 </Subscribe>
-                <Login><a>LOGIN</a></Login>
+                <Login onClick={SignIn} >
+                <a href=''> LOGIN</a> </Login>
             </Right>
 
 
@@ -102,8 +128,11 @@ font-weight:500`
 
 
 const Login = styled.div`
-color:rgba(255, 255, 255, 0.8);
-font-weight:600`
+
+font-weight:600;
+a{
+    color:rgba(255, 255, 255, 0.8);
+}`
 
 
 const Left = styled.div`
