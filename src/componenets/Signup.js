@@ -3,16 +3,21 @@ import styled from 'styled-components'
 import {auth } from "../firebase"
 import {  } from 'firebase/auth';
 import { useUserContext } from '../Contexthook';
-function Login() {
+
+
+
+
+
+function Signup() {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-  const {setname,Signup,setlogin,setsignup,Login}=useUserContext()
+  const {setname,Signup,setlogin,setsignup}=useUserContext()
 const handle= async (e)=>{
   e.preventDefault();
-  await Login(email,password)
+  await Signup(email,password)
   console.log(Signup);
   setname(email);
-  setlogin(false);
+  setsignup(false);
   setemail("")
   setpassword("")
 }
@@ -21,10 +26,10 @@ const handle= async (e)=>{
     <Container>
         <Page>
           <Close onClick={()=>{
-                    setlogin(false)
+                    setsignup(false)
                 }}><i class="uil uil-multiply"></i></Close>
           <Detail>
-            <Log>Login to continue</Log>
+            <Log>Signup to continue</Log>
             
          
             <Mobile>
@@ -36,18 +41,18 @@ const handle= async (e)=>{
               setpassword(e.target.value)
             }}/></Number>
             </Mobile>
-            <Submit  onClick={handle}><div>Submit</div></Submit>
+            <Submit  onClick={ handle}><div>Submit</div></Submit>
             <Email onClick={()=>{
-              setsignup(true);
-              setlogin(false)
-            }}><div>Don't have any account?</div></Email>
+              setsignup(false);
+              setlogin(true)
+            }}><div>Already have an account?</div></Email>
           </Detail>
         </Page>
     </Container>
   )
 }
 
-export default Login
+export default Signup
 
 const Container=styled.div`
 display:flex;

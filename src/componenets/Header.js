@@ -1,23 +1,27 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import styled from "styled-components"
 import {auth } from "../firebase"
-import { signInWithPopup } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 import {selectUserName,selectUserPhoto} from "../features/user/userSlice";
 
 import { FacebookAuthProvider } from 'firebase/auth';
 import {  useSelector} from "react-redux"
+import { useUserContext } from '../Contexthook';
  
 const provider=new FacebookAuthProvider();
 
 
 function Header() {
+  const {name,setlogin,setsignup,setname}=useUserContext();
+
+
   
 
     
     function SignIn(e){
         e.preventDefault();
-       signInWithPopup(auth,provider)
+        signInWithEmailAndPassword(auth,provider)
         .then((result)=>{
             console.log(result);
         })
@@ -60,8 +64,10 @@ function Header() {
                 <Subscribe>
                     <a>SUBSCRIBE</a>
                 </Subscribe>
-                <Login onClick={SignIn} >
-                <a href=''> LOGIN</a> </Login>
+                <Login onClick={()=>{
+                   setsignup(true)
+                }} >
+                <a > {name}</a> </Login>
             </Right>
 
 

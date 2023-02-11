@@ -36,6 +36,8 @@ export default ImageSlider
 const Carousel = styled(Slider)`
 margin-top:20px;
 z-index:0;
+-webkit-backdrop-filter: blur(5px);
+backdrop-filter: blur(5px);
 
 
 ul li button {
